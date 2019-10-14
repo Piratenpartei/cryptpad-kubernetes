@@ -1,0 +1,70 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cryptpadfrontend
+  namespace: cryptpad
+spec:
+  selector:
+    matchLabels:
+      app: cryptpadfrontend
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: cryptpadfrontend
+    spec:
+      containers:
+        - name: cryptpad-frontend
+          image: promasu/cryptpad:3.3.0-2
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+          volumeMounts:
+            - name: config
+              mountPath: /cryptpad/config
+      volumes:
+        - name: config
+          configMap:
+            name: padfrontendconfig
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cryptpad-frontend-service
+  namespace: cryptpad
+spec:
+  selector:
+    app: cryptpadfrontend
+  ports:
+    - name: frontend
+      port: 3000
+      targetPort: 3000
+---
+kind: Ingress
+apiVersion: extensions/v1beta1
+metadata:
+  name: cryptpad-frontend
+  namespace: cryptpad
+  generation: 1
+  annotations:
+    ingress.kubernetes.io/ssl-redirect: "true"
+    traefik.ingress.kubernetes.io/redirect-regex: "^/(register|login|settings|user|admin|pad|drive|poll|slide|code|whiteboard|sheet|oodoc|file|media|profile|contacts|todo|filepicker|debug|kanban|teams)$"
+    traefik.ingress.kubernetes.io/redirect-replacement: "https://cryptpad.piratenpartei.de/$1/"
+spec:
+  rules:
+    - host: cryptpad.piratenpartei.de
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: cryptpad-frontend-service
+              servicePort: 3000
+          - path: /blob
+            backend:
+              serviceName: cryptpad-api-service
+              servicePort: 3000
+          - path: /block
+            backend:
+              serviceName: cryptpad-api-service
+              servicePort: 3000

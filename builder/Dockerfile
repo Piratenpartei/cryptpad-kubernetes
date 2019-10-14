@@ -10,8 +10,8 @@ RUN npm install -g bower
 RUN mkdir /cryptpad
 WORKDIR /cryptpad
 
-RUN git clone ${REPO} .\
-    && git checkout ${BRANCH}
+RUN git clone --depth 1 --branch ${BRANCH} --single-branch ${REPO} .\
+    && rm -rf .git
 
 RUN npm install --production \
     && npm install -g bower \
