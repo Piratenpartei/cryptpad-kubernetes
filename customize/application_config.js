@@ -16,5 +16,7 @@ define(['/common/application_config_internal.js'], function (AppConfig) {
     config.registeredOnlyTypes = ['teams',];
     config.availableLanguages = ['de', 'en'];
     config.surveyURL = "https://survey.cryptpad.fr/index.php/963384?lang=de";
+    config.maxTeamsSlots = 5;
+    config.maxOwnedTeams = 3;
     return AppConfig;
 });
