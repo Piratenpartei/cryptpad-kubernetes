@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: cryptpad-frontend
-          image: promasu/cryptpad:3.3.0-2
+          image: promasu/cryptpad:3.9.0
           imagePullPolicy: Always
           ports:
             - containerPort: 3000

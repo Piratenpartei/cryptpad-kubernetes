@@ -1,6 +1,6 @@
 # We use multi stage builds
 FROM cryptpad-builder:latest AS build
-FROM node:10-stretch-slim
+FROM node:12-stretch-slim
 
 RUN groupadd cryptpad -g 4001
 RUN useradd cryptpad -u 4001 -g 4001 -d /cryptpad

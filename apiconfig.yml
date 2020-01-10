@@ -90,16 +90,6 @@ data:
 
         httpUnsafeOrigin: domain,
 
-        /*  your server's websocket url is configurable
-         *  (default: '/cryptpad_websocket')
-         *
-         *  websocketPath can be relative, of the form '/path/to/websocket'
-         *  or absolute, specifying a particular URL
-         *
-         *  'wss://cryptpad.fr:3000/cryptpad_websocket'
-         */
-        websocketPath: '/cryptpad_websocket',
-
         /*  CryptPad can log activity to stdout
          *  This may be useful for debugging
          */

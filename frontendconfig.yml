@@ -98,7 +98,7 @@ data:
          *
          *  'wss://cryptpad.fr:3000/cryptpad_websocket'
          */
-        websocketPath: 'wss://padapi.piratenpartei.de:443/cryptpad_websocket',
+        externalWebsocketURL: 'wss://padapi.piratenpartei.de/cryptpad_websocket',
 
         /*  CryptPad can log activity to stdout
          *  This may be useful for debugging

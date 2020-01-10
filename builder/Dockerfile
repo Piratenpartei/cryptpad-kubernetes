@@ -1,5 +1,5 @@
 # We use multi stage builds
-FROM node:10-stretch-slim AS build
+FROM node:12-stretch-slim AS build
 
 ARG REPO=https://github.com/xwiki-labs/cryptpad.git
 ARG BRANCH=master
