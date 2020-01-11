@@ -32,7 +32,7 @@ define([
             [ 'poll', Msg.type.poll],
             [ 'kanban', Msg.type.kanban],
             [ 'whiteboard', Msg.type.whiteboard],
-            [ 'oodoc', Msg.type.oodoc],
+//            [ 'oodoc', Msg.type.oodoc],
             [ 'sheet', Msg.type.sheet],
             [ 'ooslide', Msg.type.ooslide],
             [ 'drive', Msg.type.drive]
